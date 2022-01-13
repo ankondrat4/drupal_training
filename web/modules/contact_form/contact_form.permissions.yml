@@ -1,0 +1,10 @@
+'delete contact_form entity':
+  title: Delete entity content.
+'add contact_form entity':
+  title: Add entity content
+'view contact_form entity':
+  title: View entity content
+'edit contact_form entity':
+  title: Edit entity content
+'administer contact_form entity':
+  title: Administer settings

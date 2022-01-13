@@ -1,0 +1,5 @@
+name: pets_owners_form2
+type: module
+description: 'Form API pets owners.'
+package: pets_owners_form2
+core_version_requirement: ^9

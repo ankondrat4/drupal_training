@@ -1,0 +1,6 @@
+name: Login Only Mode
+type: module
+description: Implement custom module that set the site into Login Only mode.
+core_version_requirement: ^9
+package: Custom
+version: '1.0'

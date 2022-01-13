@@ -1,0 +1,5 @@
+# Schema for the views plugins of the Database Logging module.
+
+views.filter.sex:
+  type: 'views.filter.in_operator'
+  label: 'Sex'

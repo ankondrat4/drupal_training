@@ -1,0 +1,8 @@
+name: Smile Entity Block
+type: module
+description: 'Module to add Smile Entity block.'
+package: Custom
+version: 1.0
+core_version_requirement: ^9
+dependecies:
+  - block

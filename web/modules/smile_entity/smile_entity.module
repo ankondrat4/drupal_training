@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Contains Drupal\smile_test\batch_queue.module.
+ */
+
+/**
+ * @defgroup content_entity_example Example: smile_test Entity
+ * @{
+ * Implement a smile_test entity.
+ *
+ * This module demonstrates implementing a content entity.
+ *
+ * Entity API is the API that stores pieces of content and configuration for
+ * Drupal core. For instance, if you've encountered node content types, you've
+ * encountered entities of type 'node.'
+ *
+ * This example implements the Entity API so that we have an entity type usable
+ * by the user which you might think of as specialized nodes, but which are
+ * different from nodes. These entities are called Contact, and are known
+ * internally by the machine name content_entity_example_contact.
+ *
+ * Contact is a fieldable content entity used to hold structured information
+ * without the overhead of using a node content type. 'Fieldable' means you can
+ * attach fields to it, like you can with nodes. It is defined programmatically
+ * (completely in code). We will show the main techniques to handle and expose
+ * the contents of this entity type.
+ *
+ * The Contact entity will demonstrate the main tasks for an entity:
+ * - define
+ * - save
+ * - load
+ * - view
+ * - edit
+ * - delete
+ * - control access
+ *
+ * Where ever possible, we use the amazing tools built into D8 natively.
+ *
+ * @see Drupal\smile_test\Entity\SmileEntity
+ * @see config_entity_example
+ * }
+ */
+
+/** @file modules/custom/smile_entity/smile_entity.module
+ *
+ * Provides a theme definition for Smile Entity
+ * {@inheritdoc}
+ */
+function smile_entity_theme($existing, $type, $theme, $path) {
+  $theme = [
+    'smile_entity' => [                        // the entity id
+      'path' => $path . '/templates',          // template directory in module or theme
+      'template'  => 'mytheme',                // defines base template as /mytheme.html.twig
+      'render element' => 'elements',          // Theme API call to define the container of the entity in the render array
+      'attached' => [
+        'library' => ['smile_entity/global-styling'],
+        ],
+    ],
+  ];
+  return $theme;
+}
+
+/**
+ * Prepares variables for templates.
+ * implements hook_preprocess_HOOK()
+ */
+function template_preprocess_smile_entity(&$variables) {
+  $variables['content'] = [];
+  foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  /** @var \Drupal\smile_test\Entity\SmileEntity $entity */
+  $entity = $variables['elements']['#smile_entity'];
+  //provide the label
+  $variables['label'] = $entity->label();
+  //provide the body
+  $variables['body'] = $entity->get('body')->value;
+  //provide the url
+  $variables['url'] = $entity->toUrl()->toString();
+}

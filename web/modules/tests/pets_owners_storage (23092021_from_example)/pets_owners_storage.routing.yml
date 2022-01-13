@@ -1,0 +1,7 @@
+pets_owners_storage.main:
+  path: '/pets_owners_storage'
+  defaults:
+    _title: 'List from DB'
+    _controller: '\Drupal\pets_owners_storage\Controller\PetsOwnersStorageController::entryList'
+  requirements:
+    _permission: 'access content'

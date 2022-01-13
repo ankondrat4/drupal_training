@@ -1,0 +1,11 @@
+# Define the menu links for this module
+
+entity.contact_form.collection:
+  title: 'Contact Form'
+  route_name: entity.contact_form.collection
+  description: 'List contact_form'
+contact_form.admin.structure.settings:
+  title: 'Contact Form settings'
+  description: 'Configure contact_form'
+  route_name:  contact_form.contact_form_settings
+  parent: system.admin_structure

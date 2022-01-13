@@ -1,0 +1,18 @@
+contact_page.contact_form:
+  path: '/contact_page'
+  defaults:
+    _form: '\Drupal\contact_page\Form\ContactForm'
+    _title: 'Support contact page'
+  requirements:
+    _permission: 'access content'
+
+contact_page.contact_list:
+  path: '/contact_page/my_submissions'
+  defaults:
+    _controller: '\Drupal\contact_page\Controller\BuildListController::buildData'
+    _title: 'My Contact Submission page'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+

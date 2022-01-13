@@ -1,0 +1,5 @@
+login_message.login:
+  title: 'Configure login welcome message'
+  parent: system.admin_config_system
+  description: 'Configure welcome message for users which sing in site'
+  route_name: login_message.login

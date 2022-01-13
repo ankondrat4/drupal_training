@@ -1,0 +1,51 @@
+pets_owners_storage.main:
+  path: '/pets_owners_storage'
+  defaults:
+    _title: 'List from DB'
+    _controller: '\Drupal\pets_owners_storage\Controller\PetsOwnersStorageController::entryList'
+  requirements:
+    _permission: 'access content'
+
+pets_owners_storage.delete:
+  path: '/pets_owners_storage/delete/{id}'
+  defaults:
+    _title: 'Delete item from DB'
+    _controller: '\Drupal\pets_owners_storage\Controller\PetsOwnersStorageController::deleteItem'
+  requirements:
+    _permission: 'access content'
+    id: ^\d+$
+
+pets_owners_storage.modal_form_delete:
+  path: '/pets_owners_storage/modal_form_delete/{id}'
+  defaults:
+    _form: '\Drupal\pets_owners_storage\Form\ModalFormDelete'
+    _title: 'Delete item'
+  requirements:
+    _permission: 'access content'
+    id: ^\d+$
+
+pets_owners_storage.edit:
+  path: '/pets_owners_storage/edit/{id}'
+  defaults:
+    _form:  '\Drupal\pets_owners_storage\Form\EditPetsOwnersForm'
+    _title: 'Edit pets owners form'
+  requirements:
+    _permission: 'access content'
+    id: ^\d+$
+
+pets_owners_storage.delete_confirm:
+  path: '/pets_owners_storage/delete_item/{id}'
+  defaults:
+    _form: '\Drupal\pets_owners_storage\Form\ConfirmDeleteForm'
+    _title: 'Confirm Deletion'
+  requirements:
+    _permission: 'access content'
+    id: ^\d+$
+
+pets_owners_storage.ajax_checkbox:
+  path: '/pets_owners_storage/ajax_checkbox'
+  defaults:
+    _form: '\Drupal\pets_owners_storage\Form\AjaxCheckboxForm'
+    _title: 'Ajax Checkbox Form'
+  requirements:
+    _permission: 'access content'

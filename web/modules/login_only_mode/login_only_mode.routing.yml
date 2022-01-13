@@ -1,0 +1,7 @@
+login_only_mode.config_mode:
+  path: '/admin/config/system/config_mode'
+  defaults:
+    _form:  '\Drupal\login_only_mode\Form\ConfigLoginOnlyModeForm'
+    _title: 'Form for config Login Only Mode'
+  requirements:
+    _permission: 'access content'

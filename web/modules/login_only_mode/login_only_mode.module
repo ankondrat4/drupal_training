@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function login_only_mode_theme_suggestions_user_alter(array &$suggestions, array &$variables) {
+  $site_config = \Drupal::config('login_only_mode.resource');
+  if (\Drupal::currentUser()->isAuthenticated() && $site_config->get('enabled')) {
+    $suggestions[] = 'user__page';
+    $variables['links'] = [
+      'Support contact page' => Url::fromRoute('contact_page.contact_form'),
+      'My Contact Submission page' => Url::fromRoute('contact_page.contact_list'),
+    ];
+  }
+}
+
+

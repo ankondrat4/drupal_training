@@ -1,0 +1,5 @@
+name: pets_owners_storage
+type: module
+description: 'DB API for form pets owners.'
+package: pets_owners_storage
+core_version_requirement: ^9

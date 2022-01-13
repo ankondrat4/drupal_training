@@ -1,0 +1,5 @@
+name: Smile Test
+type: module
+description: 'Demonstrates how to display a page at a given URL.'
+package: Smile Test
+core_version_requirement: ^9

@@ -1,0 +1,8 @@
+contact_page.contact_form:
+  title: 'Support contact page'
+  description: 'Contact to support'
+  route_name:  contact_page.contact_form
+
+contact_page.contact_list:
+  title: 'My Contact Submission page'
+  route_name:  contact_page.contact_list

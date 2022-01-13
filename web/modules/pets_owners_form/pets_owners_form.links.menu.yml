@@ -1,0 +1,3 @@
+pets_owners_form.main:
+  title: Pets owners form
+  route_name: pets_owners_form.main

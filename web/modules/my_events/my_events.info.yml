@@ -1,0 +1,6 @@
+name: My events
+type: module
+description: Implement custom module that emostrate working events.
+core_version_requirement: ^9
+package: Custom
+version: '1.0'

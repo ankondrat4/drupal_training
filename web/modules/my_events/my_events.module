@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\my_events\Event\SaveNodeEvent;
+
+/**
+ * Implements hook_entity_update().
+ */
+function my_events_entity_update(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'node') {
+    ///** @var \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher $dispatcher */ //($event, string)
+    /** @var Symfony\Component\EventDispatcher\EventDispatcher; $dispatcher*/ //(string, $event)
+    $dispatcher = \Drupal::service('event_dispatcher');
+    // Create event object passing arguments.
+    $event = new SaveNodeEvent($entity);
+    // Call it.
+    $dispatcher->dispatch(SaveNodeEvent::SAVE_NODE, $event);
+}
+
+}

@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Implements hook_schema() for contact page.
+ *
+ * Defines the database tables used by this module.
+ */
+function contact_page_schema() {
+  $schema['contact_page'] = [
+    'description' => 'Stores data from module contact_page.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'user_id' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'User ID',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Email for contact.',
+      ],
+      'phone_number' => [
+        'type' => 'varchar',
+        'length' => 15,
+        'default' => '',
+        'description' => 'Phone number of user.',
+      ],
+      'message' => [
+        'type' => 'varchar',
+        'length' => 1024,
+        'default' => '',
+        'description' => 'Message.',
+      ],
+      'category' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'default' => '',
+        'description' => 'Submission category.',
+      ],
+      'date_of_create' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Date of created.',
+      ],
+    ],
+
+    'primary key' => ['id'],
+    'indexes' => [
+      'email' => ['email'],
+      'phone_number' => ['phone_number'],
+    ]
+  ];
+
+  return $schema;
+}

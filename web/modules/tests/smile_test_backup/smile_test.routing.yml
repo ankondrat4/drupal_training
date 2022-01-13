@@ -1,0 +1,88 @@
+# In order to to create pages it is necessary to define routes for them. A route
+# maps a URL path to a controller. It defines with what function or method will
+# be called when a URL is accessed. The following lines defines three of them
+# for this module.
+
+# Menu items corresponding to these URLs are defined separately in the
+# page_example.links.menu.yml file.
+
+# If the user accesses http://example.com/?q=examples/page-example, the routing
+# system will look for a route with that path. In this case it will find a
+# match, and execute the _controller callback. In this case the callback is
+# defined as a classname
+# ("\Drupal\page_example\Controller\PageExampleController") and a method
+# ("description").
+
+# Access to this path is not restricted. This is notated as _access: 'TRUE'.
+smile_test.description:
+  path: '/smile-test/info'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::description'
+    _title: 'Smile test'
+  requirements:
+    _permission: 'access content'
+
+# If the user accesses http://example.com/?q=examples/page-example/simple,
+# the routing system will look for a route with that path. In this case it will
+# find a match, and execute the _controller callback. Access to this path
+# requires "access simple page" permission.
+smile_test.simple:
+  path: '/smile-test'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::smile_test'
+    _title: 'Smile - test'
+  requirements:
+    _permission: 'access smile-test page'
+
+smile_test.my_menu:
+  path: '/smile_test/menu-example'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::my_menu'
+    _title: 'Main menu smile_test'
+  requirements:
+    _permission: 'access content'
+
+smile_test.simple2:
+  path: '/examples/smile_test/simple2'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::simple2'
+    _title: 'Simple - no arguments'
+  requirements:
+    _permission: 'access simple page'
+
+smile_test.smile-test:
+  path: '/smile_test/smile-test'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::smile_test'
+    _title: 'smile-test'
+  requirements:
+    _permission: 'access simple page'
+
+
+# If the user accesses
+# http://example.com/?q=examples/page-example/arguments/1/2, the routing system
+# will first look for examples/page-example/arguments/1/2. Not finding a match,
+# it will look for examples/page-example/arguments/1/{*}. Again not finding a
+# match, it will look for examples/page-example/arguments/{*}/2. Yet again not
+# finding a match, it will look for examples/page-example/arguments/{*}/{*}.
+# This time it finds a match, and so it will execute the _controller callback.
+# In this case, it's PageExampleController::arguments().
+
+# Since the parameters are passed to the function after the match, the function
+# can do additional checking or make use of them before executing the callback
+# function. The placeholder names "first" and "second" are arbitrary but must
+# match the variable names in the callback method, e.g. "$first" and "$second".
+smile_test.arguments:
+  path: '/smile_test/arguments/{first}/{second}'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::arguments'
+  requirements:
+    _permission: 'access arguments page'
+    
+smile_test.node:
+  path: 'smile-test/node-render/{nid}'
+  defaults:
+    _controller: '\Drupal\smile_test\Controller\SmileTestController::node'
+  requirements:
+    _permission: 'access nid smile_test page'
+    _custom_access: '\Drupal\smile_test\Controller\SmileTestController::access'

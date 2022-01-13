@@ -1,0 +1,24 @@
+<div>
+  {% trans %}
+    <h2>User info: </h2>
+    {{ list['info']['current_user'] }}
+  {% endtrans %}
+</div>
+<div class="text_italic">
+  {% trans %}
+    You are unique among {{ list['info']['count_active'] }} users
+  {% endtrans %}
+</div>
+<div class="text_italic">
+  {% trans %}
+    You have been registered {{ list['info']['position_of_registration'] }}
+  {% endtrans %}
+</div>
+<div>
+  {% trans %}
+    <h3>Content for you: </h3>
+  {% endtrans %}
+</div>
+<div>
+  {{ list['info']['random_node'] }}
+</div>

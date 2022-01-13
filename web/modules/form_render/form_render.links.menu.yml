@@ -1,0 +1,3 @@
+form_render.main:
+  title: Form render mass
+  route_name: form_render.main

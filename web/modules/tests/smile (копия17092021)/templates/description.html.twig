@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Contains the text of the page_example explanation page
+ */
+#}
+
+{% set smile_smile_test = path('smile.smile-test') %}
+{% set smile_smile_test_node = path('smile.node', {'nid': 1}) %}
+
+{% trans %}
+<p>The Smile module provides two pages, "smile-test" and "smile-test/node-render/[nid]".</p>
+<p>The <a href={{ smile_smile_test }}>smile-test</a> just show some markup text (“It is my first route ever”).</p>
+<p>The <a href={{ smile_smile_test_node }}>smile-test/node-render/[nid]</a> takes one argument and loads and show the node {{ smile_smile_test_node }}</p>
+{% endtrans %}

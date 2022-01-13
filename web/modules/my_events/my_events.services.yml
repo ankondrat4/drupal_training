@@ -1,0 +1,5 @@
+services:
+  my_events.save_node_subscriber:
+    class: Drupal\my_events\EventSubscriber\MyEventsSubscriber
+    tags:
+      - { name: event_subscriber }

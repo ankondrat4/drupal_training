@@ -1,0 +1,11 @@
+# Since the access to our new custom pages will be granted based on special
+# permissions, we need to define what those permissions are here. This ensures
+# that they are available to enable on the permissions administration pages.
+
+'access smile-test page':
+  title: Access smile-test page
+  description: Allow users to access smile-test page
+
+'access nid smile_test page':
+  title: Access page for nid smile_test page
+  description: Allow users to access for nid smile_test page

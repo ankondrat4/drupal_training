@@ -1,0 +1,28 @@
+# This file links a menu link with route_name.
+#
+# 'title' key is only key required.
+#
+# 'description' is  is shown either as a tooltip on the item or in the admin UI
+# as the description of the option on the page/
+#
+# 'weight' is used to order the items (higher weights get placed towards the
+# end of the menu among items on the same level).
+#
+# 'route_name' is used to link menu link to corresponding route.
+#
+# 'parent' is used to put item into the menu hierarchy by referring to the
+# parent menu link name.
+#
+smile_test.my_menu:
+  title: 'Menu smile_test'
+  description: 'Main menu smile_test'
+  expanded: 1
+  route_name: smile_test.my_menu
+
+smile_test.my_menu.sub_menu:
+  title: 'Sub menu smile_test'
+  parent: smile_test.my_menu
+  description: 'Sub menu smile_test'
+  expanded: 1
+  route_name: smile_test.my_menu.sub_menu
+  weight: 10

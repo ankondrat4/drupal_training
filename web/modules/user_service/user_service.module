@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Main file for hooks and custom functions.
+ */
+
+/**
+ * @file
+ * Twig template for render content
+ */
+function user_service_theme($existing, $type, $theme, $path): array {
+
+  return [
+    'user_service_theme' => [
+      'variables' => [
+        'list' => [],
+      ],
+    ],
+  ];
+}
+
+/*
+ *  Change the view mode to teaser on full page view for user_service block.
+ */
+function user_service_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+  if ($entity->getEntityTypeId() == 'node' && $view_mode == 'full') {
+    $view_mode = 'teaser';
+  }
+}

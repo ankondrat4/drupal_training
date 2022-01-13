@@ -1,0 +1,11 @@
+<?php
+/**
+* Redirect when a user has just logged in.
+*
+* @param $account
+*   The user object on which the operation was just performed.
+*/
+function login_message_user_login($account) {
+//\Drupal::messenger()->addMessage(t('Hi %name! Welcome to our website', ['%name' => $account->getDisplayName()]));
+  \Drupal::messenger()->addMessage(t(\Drupal::state()->get('login_message')));
+}

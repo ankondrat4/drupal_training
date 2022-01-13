@@ -1,0 +1,23 @@
+smile.description:
+  title: Smile
+  route_name: smile.description
+  expanded: TRUE
+
+smile.smile-test:
+  title: smile-test
+  route_name: smile.smile-test
+  parent: smile.description
+
+#smile.node:
+#  title: smile-test-node-1
+#  route_name: smile.node(1)
+#  parent: smile.description
+  
+#smile.node:
+#  title: smile-test-node-1
+#  route_name: smile.smile-test/node-render/1
+#  parent: smile.description
+
+
+# We can't define a menu link for the page_example_arguments route, because it
+# requires path arguments.

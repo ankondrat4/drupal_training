@@ -1,0 +1,123 @@
+<?php
+
+use Drupal\smile_test\Entity\SmileEntity;
+/**
+ * Implements update hook-1 that will fill your custom entity type with dummy
+ * data (create N new entities with data during update execution).
+ */
+function smile_test_update_9007(&$sandbox){
+  $connection = \Drupal::service('database');
+  $mass = [
+    [
+      'uuid' => uniqid(),
+      'client_name' => 'Andrey',
+      'prefered_brand' => 'puma',
+      'products_owned_count' => 10,
+      'registration_date' => '2021-10-21',
+      'langcode' => 'und',
+      'created' => time(),
+      'changed' => time()
+    ],
+    [
+      'uuid' => uniqid(),
+      'client_name' => 'Oleg',
+      'prefered_brand' => 'nike',
+      'products_owned_count' => 4,
+      'registration_date' => '2021-10-20',
+      'langcode' => 'und',
+      'created' => time(),
+      'changed' => time()
+    ],
+    [
+      'uuid' => uniqid(),
+      'client_name' => 'Ira',
+      'prefered_brand' => 'adidas',
+      'products_owned_count' => 7,
+      'registration_date' => '2021-10-11',
+      'langcode' => 'und',
+      'created' => time(),
+      'changed' => time()
+    ],
+    [
+      'uuid' => uniqid(),
+      'client_name' => 'Mark',
+      'prefered_brand' => 'nike',
+      'products_owned_count' => 2,
+      'registration_date' => '2021-10-09',
+      'langcode' => 'und',
+      'created' => time(),
+      'changed' => time()
+    ],
+  ];
+  foreach ($mass as $mas) {
+    $result = $connection->insert('smile_test')
+      ->fields(['uuid','client_name', 'prefered_brand', 'products_owned_count','registration_date','langcode'])
+      ->values([
+        'uuid' => $mas['uuid'],
+        'client_name' => $mas['client_name'],
+        'prefered_brand' => $mas['prefered_brand'],
+        'products_owned_count' => $mas['products_owned_count'],
+        'registration_date' => $mas['registration_date'],
+        'langcode' => $mas['langcode'],
+      ])
+      ->execute();
+  }
+
+  return t('Updated and added 10 new entities!');
+}
+
+/**
+ * implement update hook-1  that will set a current date for every
+ * “registration_date” value if the value is more than 10 days.
+ */
+function smile_test_update_9016(){
+  $connection = \Drupal::service('database');
+  $date10 = date_sub(new Datetime('NOW'), date_interval_create_from_date_string("10 days"));
+  $date10 = $date10 -> format('Y-m-d');
+  $result = $connection->update('smile_test')
+    ->fields([
+      'registration_date' => date('Y-m-d'),
+    ])
+    ->condition('registration_date',$date10,'<')
+    ->execute();
+
+  return t("Updated records witch registration_date 10 days ago! $date10");
+}
+
+/**
+ * implement update hook-3 using batch functionality (dividing into data
+ * to update into chunks with $sandbox variable usage).
+ */
+function smile_test_update_9017(&$sandbox){
+  $date10 = date_sub(new Datetime('NOW'), date_interval_create_from_date_string("10 days"));
+  $date10 = $date10 -> format('Y-m-d');
+  if (!isset($sandbox['total'])) {
+    $nids = \Drupal::entityQuery('smile_test')
+      ->condition('registration_date',$date10,'>')
+      ->execute();
+    $sandbox['total'] = count($nids);
+     $sandbox['current'] = 0;
+  }
+
+  $nodes_per_batch = 1;
+
+  $nids = \Drupal::entityQuery('smile_test')
+    ->condition('registration_date',$date10,'<')
+    ->range($sandbox['current'], $sandbox['current'] + $nodes_per_batch)
+    ->execute();
+
+  foreach($nids as $nid) {
+    $node = SmileEntity::load($nid);
+    $node->registration_date->value = time('Y-m-d');
+    $node->save();
+    $sandbox['current']++;
+  }
+
+  if ($sandbox['total'] == 0) {
+    $sandbox['#finished'] = 1;
+  } else {
+    $sandbox['#finished'] = ($sandbox['current'] / $sandbox['total']);
+  }
+
+  return t('Updated records witch registration_date 10 days ago using batch functionality!');
+}

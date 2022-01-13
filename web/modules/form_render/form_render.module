@@ -1,0 +1,12 @@
+<?php
+
+function form_render_form_render_alter(array &$form, FormStateInterface $form_state) {
+  // Убираем описание у строки поиска.
+  unset($form['keys']['#description']);
+
+  $form['privacy_policy'] = [
+    '#type' => 'checkbox',
+    '#title' => 'Я согласен с условиями обработки персональных данных',
+    '#required' => TRUE,
+  ];
+}

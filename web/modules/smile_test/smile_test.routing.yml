@@ -1,0 +1,67 @@
+# This file brings everything together. Very nifty!
+
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+entity.smile_test.canonical:
+  path: '/smile_test/{smile_test}'
+  defaults:
+    # Calls the view controller, defined in the annotation of the smile_test
+    # entity. This marks this route as belonging to this entity type.
+    _entity_view: 'smile_test'
+    _title: 'smile_test content'
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix ('view')
+    # as the $operation parameter to checkAccess().
+    _entity_access: 'smile_test.view'
+
+entity.smile_test.collection:
+  path: '/smile_test/list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the smile_test entity.
+    _entity_list: 'smile_test'
+    _title: 'smile_test list'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'view smile_test entity'
+
+smile_test.contact_add:
+  path: '/smile_test/add'
+  defaults:
+    # Calls the form.add controller, defined in the smile_test entity.
+    _entity_form: smile_test.default
+    _title: 'Add smile_test'
+  requirements:
+    # Use the entity's access controller. _entity_create_access tells the router
+    # to use the access controller's checkCreateAccess() method instead of
+    # checkAccess().
+    _entity_create_access: 'smile_test'
+
+entity.smile_test.edit_form:
+  path: '/smile_test/{smile_test}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the smile_test entity.
+    _entity_form: smile_test.default
+    _title: 'Edit smile_test'
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix
+    # ('update') as the $operation parameter to checkAccess().
+    _entity_access: 'smile_test.update'
+
+entity.smile_test.delete_form:
+  path: '/smile_test/{smile_test}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the smile_test entity.
+    _entity_form: smile_test.delete
+    _title: 'Delete smile_test'
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix
+    # ('delete') as the $operation parameter to checkAccess().
+    _entity_access: 'smile_test.delete'
+
+smile_test.smile_test_settings:
+  path: '/admin/structure/smile_test'
+  defaults:
+    _form: '\Drupal\smile_test\Form\SmileTestSettingsForm'
+    _title: 'smile_test settings'
+  requirements:
+    _permission: 'administer smile_test entity'

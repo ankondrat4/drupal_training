@@ -1,0 +1,14 @@
+{#
+
+Description text for the Form API pets_owners_form.
+
+#}
+
+{{ attach_library('core/drupal.dialog.ajax') }}
+{% set pets_owners_form = path('pets_owners_form.pets_owners_form') %}
+
+{% trans %}
+<p>Form for pets:</p>
+<p><a href={{ pets_owners_form }}>Common input pets owners form</a></p>
+
+{% endtrans %}

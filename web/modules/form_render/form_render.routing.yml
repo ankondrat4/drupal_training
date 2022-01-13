@@ -1,0 +1,7 @@
+form_render.main:
+  path: '/form_render'
+  defaults:
+    _form:  '\Drupal\form_render\Form\FormRender'
+    _title: 'Form render mass'
+  requirements:
+    _permission: 'access content'

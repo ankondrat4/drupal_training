@@ -1,0 +1,5 @@
+name: smile
+type: module
+description: 'Demonstrates how to display a page at a given URL.'
+package: smile
+core_version_requirement: ^9

@@ -1,0 +1,24 @@
+<?php
+
+function batch_queue_update_9008(&$sandbox){
+  if (!isset($sandbox['total'])) {
+    $nids = \Drupal::entityQuery('node')
+      //->condition('type', 'service')    //if want for type=service etc.
+      ->execute();
+    $sandbox['total'] = count($nids);
+    $sandbox['current'] = 0;
+  }
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  foreach ($nids as $nid) {
+    $node = $node_storage->load($nid);
+    $node->set('title', $node->get('title')->value . random_int(1, 100));
+    $node->save();
+    $sandbox['current']++;
+  }
+  if ($sandbox['total'] == 0) {
+    $sandbox['#finished'] = 1;
+  } else {
+    $sandbox['#finished'] = ($sandbox['current'] / $sandbox['total']);
+  }
+  return t('Updated all title of all nodes, added random number from 1 to 100 to the end!');
+}

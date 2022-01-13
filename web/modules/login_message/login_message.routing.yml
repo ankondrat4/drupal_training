@@ -1,0 +1,7 @@
+login_message.login:
+  path: '/admin/config/system/config_login_message'
+  defaults:
+    _form:  '\Drupal\login_message\Form\ConfigMessageForm'
+    _title: 'Form for config message when user sign in'
+  requirements:
+    _permission: 'access content'

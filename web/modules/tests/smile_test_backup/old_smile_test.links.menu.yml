@@ -1,0 +1,37 @@
+smile_test.simple:
+  title: 'Example settings'
+  description: 'Manage example settings for your site'
+  parent: system.admin_config_development
+  route_name: smile_test.simple
+  weight: 100
+  # The menu link is enabled by default, we can override it with:
+  enabled: 0
+  route_parameters: { key: 'value' }
+  # If menu_name is omitted, the "Tools" menu will be used.
+  menu_name: devel 
+  options:
+    query:
+      uid: 1
+    attributes:
+      target: _blank
+      class:
+        - some-class
+        - anotherclass
+
+smile_test.description:
+  title: smile test
+  route_name: smile_test.description
+  expanded: TRUE
+
+smile_test.simple:
+  title: Simple - no arguments
+  route_name: smile_test.simple
+  parent: smile_test.description
+  
+ smile_test.smile-test:
+  title: smile-test - no arguments
+  route_name: smile_test.smile-test
+  parent: smile_test.description
+
+# We can't define a menu link for the page_example_arguments route, because it
+# requires path arguments.

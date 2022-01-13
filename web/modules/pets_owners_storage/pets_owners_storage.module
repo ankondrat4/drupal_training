@@ -1,0 +1,16 @@
+<?php
+
+/**
+ *
+ *
+ */
+/**
+ * Gathers a list of uniquely defined database log message types.
+ *
+ * @return array
+ *   List of uniquely defined database log message types.
+ */
+function _get_sex_types() {
+  return \Drupal::database()->query('SELECT DISTINCT([prefix]) FROM {pets_owners_storage} ORDER BY [prefix]')
+    ->fetchAllKeyed(0, 0);
+}

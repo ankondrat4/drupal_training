@@ -1,0 +1,10 @@
+name: Smile Test Entity
+type: module
+description: Implement custom entity type “smile_test” that will store next data client_name (text), prefered_brand (list(string) predefined), products_owned_count (numeric, positive value accepted), registration_date (date).
+core_version_requirement: ^9
+package: Custom
+version: '1.0'
+
+dependencies:
+  - drupal:options
+  - drupal:user

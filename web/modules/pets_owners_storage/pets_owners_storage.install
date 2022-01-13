@@ -1,0 +1,115 @@
+<?php
+
+/**
+ * Install, update and uninstall functions for the pets_owners_storage module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Creates some default entries on this module custom table.
+ *
+ */
+
+function pets_owners_storage_install() {
+  // Insert some example data into our schema.
+  $entries = [
+    [
+      'name' => 'John',
+      'email' => 'Doe@i.ua',
+      'age' => 0,
+    ],
+    [
+      'name' => 'John',
+      'email' => 'Roe@i.ua',
+      'age' => 100,
+    ],
+  ];
+
+  $connection = \Drupal::database();
+  foreach ($entries as $entry) {
+    $connection->insert('pets_owners_storage')->fields($entry)->execute();
+  }
+}
+
+/**
+ * Implements hook_schema() for pets_owners_storage.
+ *
+ * Defines the database tables used by this module.
+ */
+function pets_owners_storage_schema() {
+  $schema['pets_owners_storage'] = [
+    'description' => 'Stores data from module pets_owners_form.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the pets.',
+      ],
+      'gender' => [
+        'type' => 'varchar',
+        'length' => 10,
+        'default' => '',
+        'description' => 'Name of the pets gender.',
+      ],
+      'prefix' => [
+        'type' => 'varchar',
+        'length' => 10,
+        'default' => '',
+        'description' => 'Prefix of the pets.',
+      ],
+      'age' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Age of the pets.',
+      ],
+      'fathersname' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Fathers name of the pets.',
+      ],
+      'mothersname' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Mothers name of the pets.',
+      ],
+      'somepets1' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Some pets name 1 record.',
+      ],
+      'somepets2' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Some pets name 2 record.',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Email for contact.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'name' => ['name'],
+      'surname' => ['email'],
+      'age' => ['age'],
+    ],
+  ];
+
+  return $schema;
+}

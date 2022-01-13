@@ -1,0 +1,5 @@
+batch_queue.config_cron:
+  title: 'Configure cron job'
+  parent: system.admin_config_system
+  description: 'Configure cron UnpublishNodeQueue'
+  route_name: batch_queue.config_cron

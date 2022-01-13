@@ -1,0 +1,6 @@
+name: Smile entity events
+type: module
+description: Implement event for HTTP Header "Referer" not equal to [site-url.
+core_version_requirement: ^9
+package: Custom
+version: '1.0'

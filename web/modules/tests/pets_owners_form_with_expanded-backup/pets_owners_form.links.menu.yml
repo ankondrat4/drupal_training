@@ -1,0 +1,9 @@
+pets_owners_form.description:
+  title: Main page for pets_owners_form module
+  route_name: pets_owners_form.description
+  expanded: TRUE
+
+pets_owners_form.pets_owners_form:
+  title: Input data in pets owners form
+  route_name: pets_owners_form.pets_owners_form
+  parent: pets_owners_form.description

@@ -1,0 +1,15 @@
+{% if content %}
+  {{ attach_library('smile_entity/global-styling')}}
+  <div{{ attributes.addClass('entity_div') }}>
+    <p>
+      {% trans %}<b>Title:</b>
+      <a href="{{ url }}">
+        {{ label }}</a>{% endtrans %}
+      {# Link to entity id:1
+      <a href="{{ url('entity.smile_entity.canonical', {'smile_entity': 1}) }}">{{ 'View entity page'|t }}</a>#}
+    </p>
+    <p>
+      {% trans %}<b>Body:</b> {{ body }}{% endtrans %}
+    </p>
+  </div>
+{% endif %}

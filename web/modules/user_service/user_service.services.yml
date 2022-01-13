@@ -1,0 +1,12 @@
+services:
+  user_service.data_generator:
+    class: Drupal\user_service\DataGenerator
+    arguments: ['@database','@current_user','@entity_type.manager']
+  user_service.user_message:
+    class: Drupal\user_service\UserMessage
+    arguments: ['@user_service.data_generator']
+  user_service.current_user_decorator:
+    class: Drupal\user_service\CurrentUserDecorator
+    decorates: current_user
+    decoration_priority: 100
+    arguments: ['@user_service.current_user_decorator.inner', '@event_dispatcher']

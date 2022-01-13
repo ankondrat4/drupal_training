@@ -1,0 +1,6 @@
+services:
+  login_only_mode.login_only_mode_subscriber:
+    class: Drupal\login_only_mode\EventSubscriber\LoginOnlyModeSubscriber
+    arguments: ['@messenger' ,'@current_user','@current_route_match', '@config.factory']
+    tags:
+      - { name: event_subscriber }

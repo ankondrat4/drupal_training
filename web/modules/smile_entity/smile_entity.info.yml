@@ -1,0 +1,12 @@
+name: Smile Entity
+type: module
+description: Implement custom entity type “smile_entity”
+core_version_requirement: ^9
+package: Custom
+version: '1.0'
+libraries:
+  - smile_entity/global-styling
+
+dependencies:
+  - drupal:options
+  - drupal:user

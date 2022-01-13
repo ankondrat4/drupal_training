@@ -1,0 +1,6 @@
+name: Login welcome message module
+type: module
+description: Implement custom module that edit welcome message for users which sing in site.
+core_version_requirement: ^9
+package: Custom
+version: '1.0'

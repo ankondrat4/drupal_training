@@ -1,0 +1,8 @@
+pets_owners_storage.main:
+  title: Pets owners storage
+  route_name: pets_owners_storage.main
+
+pets_owners_storage.ajax_checkbox:
+  title: Ajax Checkbox Form
+  route_name: pets_owners_storage.ajax_checkbox
+  parent: pets_owners_storage.main

@@ -1,0 +1,37 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements update that will add property Role.
+ */
+function smile_entity_update_9002(&$sandbox){
+
+  //Load all roles
+  $roles = Role::loadMultiple();
+  $roles_id = [];
+  foreach ($roles as $r => $key) {
+    $roles_id[$key->get('id')] = $key->get('id');
+  }
+
+  $field_role_definition = BaseFieldDefinition::create('list_string')
+    ->setLabel(t('Role of user'))
+    ->setDescription(t('The role user of this record'))
+    ->setReadOnly(TRUE)
+    ->setRevisionable(TRUE)
+    ->setTranslatable(TRUE)
+    ->setDefaultValue('administrator')
+    ->setSettings(['allowed_values' => $roles_id])
+    ->setRequired(TRUE)
+    ->setDisplayOptions('form', [
+      'type' => 'options_select',
+    ])
+    ->setDisplayConfigurable('form', TRUE);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('role', 'smile_entity',
+      'smile_entity', $field_role_definition);
+
+  return t('Updated and added new base property - Role');
+}

@@ -1,0 +1,15 @@
+pets_owners_form.description:
+  path: '/pets_owners_form'
+  defaults:
+    _controller: '\Drupal\pets_owners_form\Controller\Page::description'
+    _title: 'Main page pets_owners_form'
+  requirements:
+    _permission: 'access content'
+
+pets_owners_form.pets_owners_form:
+  path: '/pets_owners_form/pets_owners_form'
+  defaults:
+    _form:  '\Drupal\pets_owners_form\Form\PetsOwnersForm'
+    _title: 'Common input elements to pets_owners_form'
+  requirements:
+    _permission: 'access content'

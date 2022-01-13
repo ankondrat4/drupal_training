@@ -1,0 +1,10 @@
+# All action links for this module
+
+contact_form.entity_add:
+  # Which route will be called by the link
+  route_name: contact_form.entity_add
+  title: 'Add entity'
+
+  # Where will the link appear, defined by route name.
+  appears_on:
+    - entity.contact_form.collection

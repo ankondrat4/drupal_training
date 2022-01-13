@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_mail_alter().
+ */
+function contact_page_mail_alter(&$message) {
+  switch ($message['key']) {
+    case 'contact_page_mail':
+      $message['headers']['Return-Path'] = $message['params']['from'];
+      $message['headers']['Sender'] = $message['params']['from'];
+      $message['headers']['Reply-to'] = $message['params']['to'];
+
+      $message['subject'] = $message['params']['category'];
+      $message['body'][] = $message['params']['message'];
+      break;
+  }
+}
+

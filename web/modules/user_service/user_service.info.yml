@@ -1,0 +1,6 @@
+name: User Service Block
+description: Example with services for users.
+version: 1.0
+type: module
+core_version_requirement: ^9
+

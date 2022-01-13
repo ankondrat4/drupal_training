@@ -1,0 +1,13 @@
+<article>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</article>
+
+  <h2>Available links:</h2><br>
+  {% for key, url in urls %}
+    <p>
+      <a href={{ url }}>{{ key }}</a>
+    </p>
+  {% endfor %}
+

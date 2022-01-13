@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_form_alter()
+ * description for search_form
+ */
+
+function pets_owners_form_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['#suffix'] = '<br>' . t('Some text to place after the submit button.');
+  }
+}
+

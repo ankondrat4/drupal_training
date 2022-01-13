@@ -1,0 +1,9 @@
+<table class="tb_servises" >
+  {% for block in list %}
+    <tr>
+      {% for column in block %}
+        <td style="width: 300px !important;">{{ column }}</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>

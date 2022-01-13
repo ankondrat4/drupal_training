@@ -1,0 +1,24 @@
+smile.description:
+  path: '/smile'
+  defaults:
+    _controller: '\Drupal\smile\Controller\PageExampleController::description'
+    _title: 'smile'
+  requirements:
+    _permission: 'access content'
+
+
+smile.smile-test:
+  path: '/smile-test'
+  defaults:
+    _controller: '\Drupal\smile\Controller\PageExampleController::smile_test'
+    _title: 'smile-test'
+  requirements:
+    _permission: 'access smile-test page'
+    
+smile.node:
+  path: 'smile-test/node-render/{nid}'
+  defaults:
+    _controller: '\Drupal\smile\Controller\PageExampleController::node'
+  requirements:
+    _permission: 'access nid smile_test page'
+    _custom_access: '\Drupal\smile\Controller\PageExampleController::access'

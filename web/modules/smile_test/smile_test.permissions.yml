@@ -1,0 +1,10 @@
+'delete smile_test entity':
+  title: Delete entity content.
+'add smile_test entity':
+  title: Add entity content
+'view smile_test entity':
+  title: View entity content
+'edit smile_test entity':
+  title: Edit entity content
+'administer smile_test entity':
+  title: Administer settings

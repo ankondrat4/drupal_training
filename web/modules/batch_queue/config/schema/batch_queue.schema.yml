@@ -1,0 +1,18 @@
+# Schema for the configuration files of the Batch Queue module for config cron job UnpublishNodeQueue
+
+batch_queue.resource:
+  type: config_entity
+  label: 'Config for cron worker UnpublishNodeQueue'
+  mapping:
+    period:
+      type: integer
+      label: 'Period (how many days ago should be lastly changed node to recognize as requested one)'
+    items:
+      type: integer
+      label: 'Items to create (how many items should be created on each cron run)'
+    disabled:
+      type: boolean
+      label: 'Disabled (define if on cron run we should find nodes or just postpone any actions until user will enable it again)'
+    unpublished_label:
+      type: string
+      label: 'Unpublished label'

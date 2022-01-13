@@ -1,0 +1,22 @@
+# Define the 'local' links for the module
+
+contact_form.settings_tab:
+  route_name: contact_form.contact_form_settings
+  title: Settings
+  base_route: contact_form.contact_form_settings
+
+contact_form.view:
+  route_name: entity.contact_form.canonical
+  base_route: entity.contact_form.canonical
+  title: View
+
+contact_form.page_edit:
+  route_name: entity.contact_form.edit_form
+  base_route: entity.contact_form.canonical
+  title: Edit
+
+contact_form.delete_confirm:
+  route_name:  entity.contact_form.delete_form
+  base_route:  entity.contact_form.canonical
+  title: Delete
+  weight: 10
