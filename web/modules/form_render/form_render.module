@@ -4,9 +4,22 @@ function form_render_form_form_render_alter(&$form) {
   // Убираем описание у строки поиска.
   unset($form['keys']['#description']);
 
+  //Жобавляем чекбокс на согласие
   $form['privacy_policy'] = [
     '#type' => 'checkbox',
     '#title' => 'Я согласен с условиями обработки персональных данных',
     '#required' => TRUE,
   ];
+
+  //Add description for input phone
+  $form['phone']['#description'] = t('Start with + and your country code.');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Form ID: form_render_settings
+ * Add description for input phone
+ */
+function form_render_form_form_render_settings_alter(&$form) {
+  $form['default_phone_number']['#description'] = t('Input default value of phone number.');
 }

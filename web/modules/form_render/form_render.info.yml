@@ -3,3 +3,4 @@ type: module
 description: 'Form for test render mass.'
 package: form_render
 core_version_requirement: ^9
+configure: form_render.admin_settings
