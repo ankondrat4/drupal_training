@@ -57,6 +57,8 @@ class FormRenderSettings extends ConfigFormBase {
     $this->config('form_render.settings')
       ->set('phone', $values['default_phone_number'])
       ->save();
+
+    \Drupal::messenger()->addMessage($this->t('Saved!'));
   }
 
 }
