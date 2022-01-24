@@ -36,6 +36,7 @@ class FormRender extends FormBase {
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => 'Поиск',
+      '#attributes' => [ 'class' => ['btn btn-danger']],
     ];
 
     return $form;
